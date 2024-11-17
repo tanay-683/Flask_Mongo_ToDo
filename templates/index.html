@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongo_Flask_Todo</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+     <!-- <link rel="stylesheet" href="static/style.css"> -->
+</head>
+<body>
+    <h1>Mongo_Flask_Todo</h1>
+    <div class="content">
+        <form method="POST">
+            <b><p><label for="content">ToDo Content</label></p></b>
+            <p><input id="text-input" type="text" name="content" placeholder="add content"></p>
+            
+            <b><p><label for="degree">Degree</label></p></b>
+
+            <p>
+                <input 
+                type="radio" 
+                id="degree-0" 
+                required
+                name="degree"
+                value="important">
+                <label for="degree-0">Important</label>
+            </p>
+
+            <p>
+                <input 
+                type="radio" 
+                id="degree-1" 
+                required
+                name="degree"
+                value="unimportant">
+                <label for="degree-0">Unimportant</label>
+            </p>
+
+            <button type="submit">Submit</button>
+        </form>
+</div>
+<div class="todos_list">
+    {% for todo_item in todos %}
+    <div class="todo">
+        <p>{{ todo_item["content"]}} <b>{{ todo_item["degree"]}}</b></p>
+        <!-- sending the _id from todo_item to the delete page -->
+        <form method="POST" action="{{url_for('delete', id = todo_item['_id'])}}">
+            <button 
+            type="submit"
+            onclick="return confirm('are you sure?')"> Delete</button>
+        </form>
+        <hr>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
