@@ -1,20 +1,18 @@
 from flask import Flask, render_template, url_for, request, redirect
-from pymongo import MongoClient
 from bson.objectid import ObjectId
+# from models import todos
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# ==================================
-# initializing mongo client
+
+# # Initialize MongoDB client
 client = MongoClient('localhost', 27017)
 
-# creating a db
+# Database and collection setup
 db = client.todo_db
-
-# creating a collection
 todos = db.todos
 
-# ==================================
 
 @app.route("/", methods=["GET","POST"])
 def index():
@@ -43,4 +41,4 @@ def delete(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host='127.0.0.1', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
