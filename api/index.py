@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from bson.objectid import ObjectId
 from pymongo import MongoClient
-import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
+
 
 # MongoDB connection
 

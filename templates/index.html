@@ -10,7 +10,7 @@
 <body>
     <h1>Mongo_Flask_Todo</h1>
     <div class="content">
-        <form method="POST">
+        <form method="POST" action="/">
             <b><p><label for="content">ToDo Content</label></p></b>
             <p><input id="text-input" type="text" name="content" placeholder="add content"></p>
             
@@ -25,7 +25,7 @@
                 value="important">
                 <label for="degree-0">Important</label>
             </p>
-
+            
             <p>
                 <input 
                 type="radio" 
@@ -33,8 +33,9 @@
                 required
                 name="degree"
                 value="unimportant">
-                <label for="degree-0">Unimportant</label>
+                <label for="degree-1">Unimportant</label> <!-- Corrected -->
             </p>
+            
 
             <button type="submit">Submit</button>
         </form>
