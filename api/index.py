@@ -6,8 +6,8 @@ import os
 app = Flask(__name__)
 
 # MongoDB connection
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")
-client = MongoClient(MONGO_URI)
+
+client = MongoClient('localhost', 27017)
 
 # Database and collection
 db = client.todo_db
@@ -37,3 +37,6 @@ def delete(id):
 
 def handler(event, context):  # For Vercel Serverless
     return app(event, context)
+
+if __name__ == "__main__":
+    app.run(debug=True)
